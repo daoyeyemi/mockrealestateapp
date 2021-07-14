@@ -13,7 +13,7 @@ const Navigation = styled.nav`
     z-index: 100;
     position: fixed;
     width: 100%;
-    background: #000;
+    background: red;
     `;
 const NavLink = css`
     color: #fff;
@@ -40,6 +40,7 @@ const MenuBars = styled.i``;
 const NavigationMenu = styled.div`
 display: flex;
 align-items: center;
+margin-right: 48px;
 `;
 
 const NavMenuLinks = styled(Link)`
@@ -57,7 +58,7 @@ export default function Navbar() {
                 ))}
             </NavigationMenu>
             <NavigationBtn>
-                <Button to="/contact">Contact Us</Button>
+                <Button to="/contact" primary="true">Contact Us</Button>
             </NavigationBtn>
         </Navigation>
     )
