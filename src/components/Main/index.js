@@ -18,13 +18,25 @@ const MainWrapper = styled.div`
     position: relative;
 `
 
-const Main = () => {
+const MainSlide = styled.div``;
+const MainSlider = styled.div``;
+const MainImage = styled.div``;
+const MainContent = styled.div``;
+
+const Main = ({ slides }) => {
     return (
         <MainSection>
             <MainWrapper>
-                <h1>
-                    Yooooo
-                </h1>
+                {slides.map((slide, index) => (
+                    <MainSlide key={index}>
+                        <MainSlider>
+                            <MainImage/>
+                            <MainContent>
+                                <h1>{slide.title}</h1>
+                            </MainContent>
+                        </MainSlider>
+                    </MainSlide>
+                ))}
             </MainWrapper>
         </MainSection>
     )
