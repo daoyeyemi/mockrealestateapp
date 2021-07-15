@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import styled, { css } from 'styled-components/macro'
 import Button from '../Button';
 import { IoMdArrowRoundForward } from 'react-icons/io';
@@ -74,11 +74,11 @@ const MainContent = styled.div`
     width: calc(100% - 100px);
     color: white;
     margin-left: 70px;
-    margin-top: 150px;
+    margin-top: 350px;
 
     h1 {
         font-size: 50px;
-        font-weight: 400;
+        font-weight: 700;
         text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.4);
         text-align: left;
         margin-bottom: 0.8rem
@@ -91,7 +91,10 @@ const MainContent = styled.div`
     }
 `;
 
-const Arrow = styled(IoMdArrowRoundForward)``;
+const Arrow = styled(IoMdArrowRoundForward)`
+    margin-left: 0.5rem;
+
+`;
 
 const SliderButtons = styled.div`
     position: absolute;
@@ -128,12 +131,28 @@ const NextArrow = styled(IoArrowForward)`
 `
 
 const Main = ({ slides }) => {
+
+    const [current, setCurrent] = useState(0)
+    const length = slides.length
+    const timeout = useRef(null)
+
+    const nextSlide = () => {
+        setCurrent(current === length - 1 ? 0 : current + 1)
+
+        console.log(current)
+    }
+
+    const prevSlide = () => {
+        setCurrent(current === 0 ? length - 1 : current - 1)
+    }
+
     return (
         <MainSection>
             <MainWrapper>
                 {slides.map((slide, index) => (
                     <MainSlide key={index}>
-                        <MainSlider>
+                        {index === current && (
+                            <MainSlider>
                             <MainImage src={slide.image} alt={slide.alt}/>
                             <MainContent>
                                 <h1>{slide.title}</h1>
@@ -147,11 +166,13 @@ const Main = ({ slides }) => {
                                     </Button>
                             </MainContent>
                         </MainSlider>
+                        )}
+                        
                     </MainSlide>
                 ))}
                 <SliderButtons>
-                    <PrevArrow />
-                    <NextArrow />
+                    <PrevArrow onClick={prevSlide} />
+                    <NextArrow onClick={nextSlide} />
                 </SliderButtons>
             </MainWrapper>
         </MainSection>

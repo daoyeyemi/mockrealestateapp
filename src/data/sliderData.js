@@ -8,7 +8,7 @@ export const dataSlide = [
         title: 'Luxury Villa in Lagos, Nigeria',
         price: '$4,000,000',
         path: '/homes',
-        label: 'View property',
+        label: 'View',
         image: Image1,
         alt: 'House'
     },
@@ -16,7 +16,7 @@ export const dataSlide = [
         title: 'Condominium in Rio de Janeiro, Brazil',
         price: '$1,500,000',
         path: '/homes',
-        label: 'View property',
+        label: 'View',
         image: Image2,
         alt: 'House'
     },
@@ -24,7 +24,7 @@ export const dataSlide = [
         title: 'House in Bel Air',
         price: '$3,000,000',
         path: '/homes',
-        label: 'View property',
+        label: 'View',
         image: Image3,
         alt: 'House'
     },
@@ -32,7 +32,7 @@ export const dataSlide = [
         title: 'Mansion in Houston, Texas',
         price: '$600,000',
         path: '/homes',
-        label: 'View property',
+        label: 'View',
         image: Image4,
         alt: 'House'
     },
