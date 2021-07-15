@@ -71,11 +71,11 @@ const NavMenuLinks = styled(Link)`
     ${NavLink} 
 `;
 
-export default function Navbar() {
+export default function Navbar({ toggle }) {
     return (
         <Navigation>
             <Logo to="/">Living</Logo>
-            <MenuBars />
+            <MenuBars onClick={toggle} />
             <NavigationMenu>
                 {menuData.map((item, index) => (
                     <NavMenuLinks to={item.link} key={index}>{item.title}</NavMenuLinks>
