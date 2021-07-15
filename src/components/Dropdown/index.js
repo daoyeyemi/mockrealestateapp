@@ -4,6 +4,7 @@ import dataMenu from '../../data/dataMenu'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 import Button from '../Button'
+
 const DropdownContainer = styled.div`
     position: fixed;
     z-index: 999;
@@ -41,15 +42,32 @@ const DropdownMenu = styled.div`
     grid-template-rows: repeat(4, 80px);
     text-align: center;
     margin-bottom: 4rem;
+
+    @media screen and (max-width: 480px) {
+        grid-template-rows: repeat(4, 60px)
+    }
 `
 const DropdownLink = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    list-style: none;
+    color: fff;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    &: hover {
+        color: #000d1a
+    }
 `
 
-const BtnWrap = styled.div``
+const BtnWrap = styled.div`
+    display: flex;
+    justify-content: center;
+`
 
 const Dropdown = () => {
     return (
@@ -59,11 +77,11 @@ const Dropdown = () => {
             </Icon>
             <DropdownWrapper>
                 <DropdownMenu>
-                    {dataMenu.map((item, index) => {
+                    {dataMenu.map((item, index) => (
                         <DropdownLink to={item.link} key={index}>
                             {item.title}
-                        </DropdownLink>
-                    })}
+                        </DropdownLink>)
+                    )}
                 </DropdownMenu>
                 <BtnWrap>
                     <Button primary="true" round="true" big="true" to="/contact">

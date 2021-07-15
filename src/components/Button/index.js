@@ -7,7 +7,7 @@ const Button = styled(Link)`
     white-space: nowrap;
     outline: none;
     border: none;
-    min-width: 100px;
+    min-width: 200px;
     max-width: 100px;
     cursor: pointer;
     text-decoration: none;
