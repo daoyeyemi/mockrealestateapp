@@ -1,6 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components/macro'
 import Button from '../Button';
+import { IoMdArrowRoundForward } from 'react-icons/io';
+import { IoArrowForward, IoArrowBack } from 'react-icons/io5'
 
 const MainSection = styled.section`
     height: 100vh;
@@ -19,10 +21,89 @@ const MainWrapper = styled.div`
     position: relative;
 `
 
-const MainSlide = styled.div``;
-const MainSlider = styled.div``;
-const MainImage = styled.div``;
-const MainContent = styled.div``;
+const MainSlide = styled.div`
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+`;
+
+const MainSlider = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+     content: '';
+     position: absolute;
+     z-index: 2;
+     width: 100%;
+     height: 100%;
+     bottom: 0vh;
+     left: 0;
+     overflow: hidden;
+     opacity: 0.4;
+     background: linear-gradient(
+         0deg,
+         rgba(0, 0, 0, 0.2) 0%,
+         rgba(0, 0, 0, 0.2) 50%,
+         rgba(0, 0, 0, 0.6) 100%,
+     )   
+    }
+`;
+
+const MainImage = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+`;
+
+const MainContent = styled.div`
+    
+`;
+
+const Arrow = styled(IoMdArrowRoundForward)``;
+
+const SliderButtons = styled.div`
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    z-index: 10;
+`
+
+const arrowButtons = css`
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    cursor: pointer;
+    background: #000d1a;
+    border-radius: 50px;
+    padding: 10px;
+    margin-right: 1rem;
+    user-select: none;
+    transition: 0.3s;
+
+    &:hover {
+        background: #cd853f;
+        transform: scale(1.05);
+    }
+`
+
+const PrevArrow = styled(IoArrowBack)`
+    ${arrowButtons}
+`
+
+const NextArrow = styled(IoArrowForward)`
+    ${arrowButtons}
+`
 
 const Main = ({ slides }) => {
     return (
@@ -31,7 +112,7 @@ const Main = ({ slides }) => {
                 {slides.map((slide, index) => (
                     <MainSlide key={index}>
                         <MainSlider>
-                            <MainImage/>
+                            <MainImage src={slide.image} alt={slide.alt}/>
                             <MainContent>
                                 <h1>{slide.title}</h1>
                                 <p>{slide.price}</p>
@@ -39,13 +120,17 @@ const Main = ({ slides }) => {
                                     to={slide.path}
                                     primary='true'
                                     css={`max-width: 160px;`}
-                                    >
+                                    >{slide.label}
                                         <Arrow />
                                     </Button>
                             </MainContent>
                         </MainSlider>
                     </MainSlide>
                 ))}
+                <SliderButtons>
+                    <PrevArrow />
+                    <NextArrow />
+                </SliderButtons>
             </MainWrapper>
         </MainSection>
     )
