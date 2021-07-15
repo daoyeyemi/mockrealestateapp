@@ -7,7 +7,7 @@ import { dataSlide } from '../src/data/sliderData'
 function App() {
   return (
     <div>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Navbar />
       <Main slides={dataSlide} />
     </div>
