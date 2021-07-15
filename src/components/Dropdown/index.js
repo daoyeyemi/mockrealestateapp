@@ -89,7 +89,6 @@ const Dropdown = ({ isOpen, toggle }) => {
                     </Button>
                 </BtnWrap>
             </DropdownWrapper>
-            <h1>Dropdown, drop, drop</h1>
         </DropdownContainer>
     )
 }

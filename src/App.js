@@ -5,6 +5,8 @@ import GlobalStyle from '../src/globalStyles';
 import Main from './components/Main'
 import { dataSlide } from '../src/data/sliderData'
 import Dropdown from './components/Dropdown';
+import Info from './components/Info';
+import { InfoData } from "./data/InfoData"
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +21,7 @@ function App() {
       <Navbar toggle={toggle} />
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Main slides={dataSlide} />
+      <Info {...InfoData} />
     </div>
   );
 }
